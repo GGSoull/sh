@@ -853,9 +853,9 @@ Debian_apt(){
 # 下载 ShadowsocksR
 Download_SSR(){
 	cd "/usr/local"
-	wget -N --no-check-certificate "https://github.com/gosoull/shadowsocksr/archive/manyuser.zip"
+	wget -N --no-check-certificate "https://github.com/sh4300/shadowsocksr/archive/manyuser.zip"
 	#git config --global http.sslVerify false
-	#env GIT_SSL_NO_VERIFY=true git clone -b manyuser https://github.com/gosoull/shadowsocksr.git
+	#env GIT_SSL_NO_VERIFY=true git clone -b manyuser https://github.com/sh4300/shadowsocksr.git
 	#[[ ! -e ${ssr_folder} ]] && echo -e "${Error} ShadowsocksR服务端 下载失败 !" && exit 1
 	[[ ! -e "manyuser.zip" ]] && echo -e "${Error} ShadowsocksR服务端 压缩包 下载失败 !" && rm -rf manyuser.zip && exit 1
 	unzip "manyuser.zip"
@@ -877,14 +877,14 @@ Download_SSR(){
 }
 Service_SSR(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/gosoull/sh/master/ssrmu_centos -O /etc/init.d/ssrmu; then
+		if ! wget --no-check-certificate https://raw.githubusercontent.com/sh4300/sh/master/ssrmu_centos -O /etc/init.d/ssrmu; then
 			echo -e "${Error} ShadowsocksR服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/ssrmu
 		chkconfig --add ssrmu
 		chkconfig ssrmu on
 	else
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/gosoull/sh/master/ssrmu_debian -O /etc/init.d/ssrmu; then
+		if ! wget --no-check-certificate https://raw.githubusercontent.com/sh4300/sh/master/ssrmu_debian -O /etc/init.d/ssrmu; then
 			echo -e "${Error} ShadowsocksR服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/ssrmu
@@ -1663,7 +1663,7 @@ Other_functions(){
 }
 # 封禁 BT PT SPAM
 BanBTPTSPAM(){
-	wget -N --no-check-certificate https://raw.githubusercontent.com/gosoull/sh/master/ban_iptables.sh && chmod +x ban_iptables.sh && bash ban_iptables.sh banall
+	wget -N --no-check-certificate https://raw.githubusercontent.com/sh4300/sh/master/ban_iptables.sh && chmod +x ban_iptables.sh && bash ban_iptables.sh banall
 	rm -rf ban_iptables.sh
 }
 # 解封 BT PT SPAM
@@ -1776,7 +1776,7 @@ Update_Shell(){
 		Service_SSR
 	fi
 	cd "${file}"
-	wget -N --no-check-certificate "https://raw.githubusercontent.com/gosoull/sh/master/ssrmu.sh" && chmod +x ssrmu.sh
+	wget -N --no-check-certificate "https://raw.githubusercontent.com/sh4300/sh/master/ssrmu.sh" && chmod +x ssrmu.sh
 	echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !(注意：因为更新方式为直接覆盖当前运行的脚本，所以可能下面会提示一些报错，无视即可)" && exit 0
 }
 # 显示 菜单状态
